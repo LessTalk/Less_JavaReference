@@ -76,3 +76,47 @@ num2 = 20
 array 被初始化 arr 的拷贝也就是一个对象的引用，也就是说 array 和 arr 指向的是同一个数组对象。 
 因此，外部对引用对象的改变会反映到所对应的对象上
 ~~~
+
+#### example 3
+~~~java
+    public static void main(String[] args) {
+        StringBuffer a = new StringBuffer("A");
+        StringBuffer b = new StringBuffer("B");
+        operator(a, b);
+        System.out.println(a + "," + b);
+    }
+
+    static void operator(StringBuffer x, StringBuffer y) {
+        x.append(y);
+        y = x;
+    }
+~~~
+
+###### Result
+~~~java
+AB
+B
+~~~
+
+#### example 4
+
+~~~java
+    public static void main(String[] args) {
+        Integer var1 = new Integer(1);
+        Integer var2 = var1;
+        doSomething(var2);
+        System.out.print(var1.intValue());
+        System.out.print(var1 == var2);
+    }
+
+    public static void doSomething(Integer integer) {
+        integer = new Integer(2);
+    }
+~~~
+
+###### Result
+~~~java
+1
+true
+~~~
+    
